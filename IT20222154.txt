@@ -1,0 +1,73 @@
+Answer for Task 1 - 1D Convolution for Edge Detection:
+
+In the provided 1D_Convolution.ipynb notebook, we explored the concept of 1D convolution and its application in identifying edges in an image. The process involved the following steps:
+
+    Input Signal and Filter Visualization:
+    We began by defining an input signal using an array signal, which simulates the intensity values along a row or column of an image. We visualized this signal using a stem plot to understand how its values change along its length.
+
+    Edge-Detection Filter:
+    To detect edges, we employed a 1D filter called oneD_filter. This filter, represented as [-1, 1], is designed to identify rapid changes or gradients between neighboring values. We visualized the filter using another stem plot, illustrating the values of the filter.
+
+    1D Convolution Operation:
+    The core of edge detection was performed through the 1D convolution operation between the input signal and the edge-detection filter. This operation captures and emphasizes areas in the signal where there are significant transitions from lower to higher intensity values or vice versa.
+
+    Convolution Result and Edge Detection:
+    The result of the convolution was obtained by applying the np.convolve function with the 'valid' mode. This result was then visualized using a stem plot. Notably, the plot exhibited peaks where rapid changes in intensity occurred in the original signal.
+
+Understanding Edge Detection:
+In the context of image processing, edges signify transitions between different regions in an image. These transitions often indicate boundaries of objects or changes in texture, and they are pivotal for tasks such as object recognition and segmentation. By employing a 1D convolution operation with an edge-detection filter, we essentially highlighted regions where intensity values underwent significant alterations. This process mimics how variations in pixel intensity along a row or column in an image can signify the presence of edges.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Answer for Task 3
+
+
+Why does the validation error increase when the number of epochs are increased? How can you modify the training process to stop that from happening?
+
+Validation Error Increase with Epochs:
+The validation error can increase when the number of epochs is increased due to overfitting. Overfitting occurs when a model learns to perform exceptionally well on the training data but fails to generalize well to unseen data. As the number of epochs increases, the model may become overly specialized to the training data and start memorizing the noise in the training set, resulting in an increase in validation error. In other words, the model starts to fit the training data too closely, losing the ability to generalize to new examples.
+
+Mitigating Overfitting:
+To mitigate the increase in validation error caused by overfitting, several techniques can be employed:
+
+    Early Stopping: Monitor the validation error during training and stop training when the validation error starts to increase consistently. This prevents the model from continuing to memorize the training data.
+
+    Regularization: Techniques like L1 and L2 regularization can penalize complex model structures, discouraging overfitting.
+
+    Dropout: Adding dropout layers during training randomly deactivates a fraction of neurons, preventing any single neuron from becoming overly reliant on specific features.
+
+    Reduce Model Complexity: Use a simpler model architecture to prevent the model from having too many parameters to memorize the training data.
+
+    Data Augmentation: Apply random transformations to the training data, such as rotations, flips, and scaling, to artificially increase the size of the training dataset and improve model generalization.
+
+
+
+Explain how the mini-batch SGD (Stochastic Gradient Descent) algorithm can converge faster than the batch Gradient Descent algorithm.
+
+In the context of training machine learning models, Gradient Descent aims to minimize the loss function by iteratively adjusting the model's parameters. The difference between batch Gradient Descent and mini-batch SGD lies in the amount of data used to update the parameters in each iteration:
+
+    Batch Gradient Descent: In batch Gradient Descent, the entire training dataset is used to compute the gradient of the loss function with respect to the model's parameters. The parameters are then updated based on this averaged gradient. This approach can be computationally expensive and slower, especially for large datasets, as it requires processing the entire dataset in each iteration.
+
+    Mini-Batch Stochastic Gradient Descent (SGD): In mini-batch SGD, the training dataset is divided into smaller subsets or batches. During each iteration, a randomly selected mini-batch is used to compute the gradient of the loss function. The parameters are updated based on this gradient. This approach introduces randomness into the training process, which can help the algorithm escape local minima and converge faster. Additionally, mini-batch SGD takes advantage of parallelism in modern hardware, making it more computationally efficient.
+
+Advantages of Mini-Batch SGD:
+
+    Faster Convergence: Due to the frequent updates and noise in gradients from smaller batches, mini-batch SGD can converge faster compared to batch Gradient Descent. It helps the algorithm find a good solution more quickly.
+
+    Improved Generalization: The noise introduced by mini-batch updates can act as a form of regularization, preventing the model from getting stuck in local minima and improving its generalization to unseen data.
+
+    Efficient Hardware Utilization: Mini-batch SGD leverages parallelism in hardware (e.g., GPUs) by processing multiple batches concurrently, leading to efficient use of resources.
+
+    Dynamic Learning Rates: Mini-batch SGD allows the use of adaptive learning rate techniques, which adjust the learning rate during training based on the gradient's characteristics.
+
